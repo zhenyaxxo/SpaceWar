@@ -4,6 +4,7 @@
 using namespace std;
 
 bool window_is_open = true;
+COORD coord;
 
 class Game {
 public:
@@ -11,6 +12,7 @@ public:
 	void StartGame();
 	void Player();
 	void Enemy();
+	void Position(int x, int y);
 };
 
 Game obj;
@@ -20,11 +22,18 @@ void Game::map()
 	const int height = 20;
 	const int weight = 40;
 	char Arr[height][weight];
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < weight; j++) {
-			if ((i == 0) || (i == height - 1) || (j == 0)) {
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < weight; j++)
+		{
+			if ((i == 0) || (j == 0) || (i == height - 1) || (j == weight - 1))
+			{
 				Arr[i][j] = '*';
-				cout << Arr[i][j] << " ";
+				cout << Arr[i][j];
+			}
+			else {
+				Arr[i][j] = ' ';
+				cout << Arr[i][j];
 			}
 		}
 		cout << endl;
@@ -37,13 +46,25 @@ void Game::StartGame()
 	obj.map();
 	while (true)
 	{
-		//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), 10, 20);
+		
 	}
 }
 
 void Game::Player()
 {
 
+}
+
+void Game::Enemy()
+{
+
+}
+
+void Game::Position(int x, int y)
+{
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
 void menu()
